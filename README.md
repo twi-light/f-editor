@@ -1,5 +1,5 @@
 # f-editor
-https://sexytwilight.github.io/f-editor/
+https://twi-light.github.io/f-editor/
 ---
 A WYSIWYG Editor for F-List.
 ---
