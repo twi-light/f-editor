@@ -1,7 +1,9 @@
-FEditor = require './views/editor.cjsx'
+ThemeSelector = require './views/theme.selector.cjsx'
+Editor = require './views/editor.cjsx'
 
-module?.exports = FEditor
+module?.exports = Editor
 if window?
-  window.FEditor = FEditor
+  window.FEditor = Editor
   window.addEventListener 'load', ->
-    new FEditor node for node in document.querySelectorAll '.f-editor'
+    new ThemeSelector node for node in document.querySelectorAll '[type=f-editor-theme-selector]'
+    new Editor node for node in document.querySelectorAll 'textarea'
