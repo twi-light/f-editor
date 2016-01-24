@@ -19,7 +19,7 @@ module.exports = class FEditor
     @editable = <div f-editor-editable chat-message contentEditable f-editor-show-tags />
 
     @editable.innerHTML = localStorage["/twi-light/f-editor/demo-html"] or """
-<p>Here are some examples:</p>
+<p>These shortcuts only work on chrome right now (WIP)</p>
 <p>we have <b>ctrl+b to&nbsp; bold</b></p>
 <p>we also have <i>ctrl+i for italics</i></p>
 <p>We have <u>ctrl+u for underline</u></p>
