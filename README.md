@@ -25,5 +25,6 @@ webpack --watch
 ```
 
 ----------
-Under The MIT License (MIT)
+Free & Open Source  
+Under The MIT License (MIT)  
 Copyright (c) 2016 Twi light
