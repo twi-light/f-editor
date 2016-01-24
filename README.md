@@ -23,3 +23,7 @@ webpack-dev-server
 # Build Production:
 webpack --watch
 ```
+
+----------
+Under The MIT License (MIT)
+Copyright (c) 2016 Twi light
