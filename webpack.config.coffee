@@ -7,12 +7,12 @@ module.exports =
   devServer:
     open: yes
     port: 80
-  # plugins: [
-  #   new webpack.optimize.UglifyJsPlugin {
-  #     minimize: yes
-  #     compress: warnings: no
-  #   }
-  # ]
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin {
+      minimize: yes
+      compress: warnings: no
+    }
+  ]
   output:
     path: path.join __dirname, 'dist/'
     publicPath: 'dist/'
