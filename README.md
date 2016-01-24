@@ -3,7 +3,7 @@ https://sexytwilight.github.io/f-editor/
 ---
 A WYSIWYG Editor for F-List.
 ---
-Install https://nodejs.org/ Nodejs 5.4.1+
+Install https://nodejs.org/ Nodejs 5.5.x+
 ```bash
 # Install Dependencies and Webpack
 npm install
