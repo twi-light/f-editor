@@ -1,8 +1,10 @@
 # f-editor
-https://twi-light.github.io/f-editor/
+DEMO: https://twi-light.github.io/f-editor/
 ---
+
 A WYSIWYG Editor for F-List.
 ---
+
 Install https://nodejs.org/ Nodejs 5.5.x+
 ```bash
 # Install Dependencies and Webpack
