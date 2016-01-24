@@ -1,6 +1,6 @@
 {
   "name": "f-editor",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "What You See Is What You Get Editor for F-List",
   "main": "dist/f-editor.js",
   "repository": {
