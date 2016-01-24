@@ -9,10 +9,9 @@ module.exports = class Editable
       <div f-editor-editable chat-message contentEditable />
     # localStorage["/twi-light/f-editor/demo-html"] or
     @element.innerHTML = """
-      <p>These shortcuts only work on chrome right now (WIP)</p>
-      <p>we have <b>ctrl+b to&nbsp; bold</b></p>
-      <p>we also have <i>ctrl+i for italics</i></p>
-      <p>We have <u>ctrl+u for underline</u></p>
+      <p> We have <b>some text that is bold</b>. </p>
+      <p> We also have <i>some text in italics</i>. </p>
+      <p> We have <u>this text that is underlined</u>. </p>
 
       <span class="f-editor-eicon">twiprogramming</span> You can <span class="f-editor-eicon">twiimpossible</span> put stuff <span class="f-editor-eicon">twiintensifies</span> in between <span class="f-editor-eicon">twicutiemark</span> the icons <span class="f-editor-eicon">twiwindy</span>
       <br/><br/>
