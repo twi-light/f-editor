@@ -17,8 +17,8 @@ module.exports = class FEditor
     dom.className @textarea.parentElement, 'f-editor-editing'
 
     @editable = <div f-editor-editable chat-message contentEditable f-editor-show-tags />
-
-    @editable.innerHTML = localStorage["/twi-light/f-editor/demo-html"] or """
+    # localStorage["/twi-light/f-editor/demo-html"] or 
+    @editable.innerHTML = """
 <p>These shortcuts only work on chrome right now (WIP)</p>
 <p>we have <b>ctrl+b to&nbsp; bold</b></p>
 <p>we also have <i>ctrl+i for italics</i></p>
