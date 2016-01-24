@@ -1,0 +1,53 @@
+.f-editor
+  .f-editor-editable
+    whiteSpace pre-wrap
+    minHeight 4em
+    width 100%
+    padding 1em
+    border 1px dotted grey
+  span.f-editor-eicon
+    min-width 50px
+    min-height 4.5em
+    background-size 3em 3em
+    background-repeat: no-repeat
+    background-position 0em 1.5em
+    white-space nowrap
+    display inline-block
+
+.f-editor.f-editor-show-tags
+  ::before,::after
+    opacity .69
+  b::before
+    content '[b]'
+  b::after
+    content '[/b]'
+  i::before
+    content '[i]'
+  i::after
+    content '[/i]'
+  s::before
+    content '[s]'
+  s::after
+    content '[/s]'
+  u::before
+    content '[u]'
+  u::after
+    content '[/u]'
+
+  span.f-editor-icon
+    border 1px dotted grey
+  span.f-editor-icon::before
+    content '[icon]'
+    white-space nowrap
+  span.f-editor-icon::after
+    content '[/icon]'
+    white-space nowrap
+
+  span.f-editor-eicon
+    border 1px dotted grey
+  span.f-editor-eicon::before
+    content '[eicon]'
+    white-space nowrap
+  span.f-editor-eicon::after
+    content '[/eicon]'
+    white-space nowrap

@@ -1,49 +1,8 @@
-.f-editor-editing > textarea
+.f-editor
+  .f-editor-editable
+    display none
+.f-editor.f-editor-editing
+  .f-editor-editable
+    display block
+.f-editor.f-editor-editing + textarea
   display none
-
-.f-editor-editable
-  whiteSpace pre-wrap
-  minHeight 4em
-  width 100%
-  padding 1em
-  border 1px dotted grey
-
-span.eicon
-  min-width 50px
-  min-height 4em
-  display inline-block
-  background-size 3em 3em
-  background-repeat: no-repeat
-  background-position 0em 1em
-  border 1px dotted grey
-  white-space nowrap
-
-.f-editor-show-tags
-  b:before
-    content '[b]'
-  b:after
-    content '[/b]'
-  i:before
-    content '[i]'
-  i:after
-    content '[/i]'
-  s:before
-    content '[s]'
-  s:after
-    content '[/s]'
-  u:before
-    content '[u]'
-  u:after
-    content '[/u]'
-  span.eicon:before
-    content '[eicon]'
-    white-space nowrap
-  span.eicon:after
-    content '[/eicon]'
-    white-space nowrap
-
-.f-editor-toolbar button
-  border 1px solid white
-  padding .5em
-  margin .5em
-  cursor pointer
