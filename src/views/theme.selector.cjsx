@@ -5,16 +5,18 @@ stylesheet = <link rel="stylesheet" type="text/css" href={"https://static.f-list
 document.head.appendChild stylesheet
 
 module.exports = class ThemeSelector
-  stylesheet: stylesheet
-  constructor: ->
+  constructor: (@parent) ->
     @element =
-      <div ui-widget f-editor-theme-selector>
-        <select>
-          <option onclick={@theme 'default'}>Default</option>
-          <option onclick={@theme 'dark'}>Dark</option>
-          <option onclick={@theme 'lite'}>Light</option>
+      <div f-editor-theme-selector>
+        <select onchange={
+          ->
+            stylesheet.href = "https://static.f-list.net/css/#{@.value or 'default'}.css"
+            localStorage["/twi-light/f-editor/demo-theme"] = @.value
+          }>
+          <option value="default">Default Theme</option>
+          <option value="dark">Dark Theme</option>
+          <option value="light">Light Theme</option>
         </select>
       </div>
-  theme: (name) -> =>
-    @stylesheet.href = "https://static.f-list.net/css/#{name or 'default'}.css"
-    localStorage["/twi-light/f-editor/demo-theme"] = name
+    stylesheet.href = "https://static.f-list.net/css/#{localStorage["/twi-light/f-editor/demo-theme"] or 'default'}.css"
+    @parent.appendChild @element
