@@ -1,14 +1,18 @@
 {
   "manifest_version": 2,
   "name": "f-editor",
-  "description": "A WYSIWYG Editor for F-List.",
+  "description": "A WYSIWYG Editor for [/BBCode] on F-List.",
   "version": "0.1",
   "content_scripts": [
     {
       "matches": ["https://www.f-list.net/*"],
-      "js": ["dist/f-editor.js"]
+      "js": ["dist/f-editor-chrome-extension.js"]
     }
   ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "dist/popup.html"
+  },
   "permissions": [
     "tabs",
     "https://www.f-list.net/*"
