@@ -5,8 +5,8 @@ HtmlWebpackPlugin = require 'html-webpack-plugin'
 module.exports =
   watch: yes
   entry:
-    'content-script.www.f-list.net.js': 'content-script.www.f-list.net.coffee'
-    'popup.js': 'popup.coffee'
+    'content-script.www.f-list.net.js': './src/content-script.www.f-list.net.coffee'
+    'popup.js': './src/popup.coffee'
   output:
     path: path.join __dirname, 'dist'
     filename: '[name]'
