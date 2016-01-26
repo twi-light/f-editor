@@ -1,0 +1,38 @@
+p.message {
+  min-width: 900px;
+  animation: greenWhite linear 4s;
+}
+@-moz-keyframes greenWhite {
+  from {
+    background-color: #008000;
+  }
+  to {
+    background-color: #fff;
+  }
+}
+@-webkit-keyframes greenWhite {
+  from {
+    background-color: #008000;
+  }
+  to {
+    background-color: #fff;
+  }
+}
+@-o-keyframes greenWhite {
+  from {
+    background-color: #008000;
+  }
+  to {
+    background-color: #fff;
+  }
+}
+@keyframes greenWhite {
+  from {
+    background-color: #008000;
+  }
+  to {
+    background-color: #fff;
+  }
+}
+
+/*# sourceMappingURL=content-script.css.map*/

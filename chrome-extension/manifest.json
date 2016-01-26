@@ -6,15 +6,18 @@
   "content_scripts": [
     {
       "matches": ["https://www.f-list.net/*"],
-      "js": ["dist/content-script.js"]
+      "js": ["dist/content-script.js"],
+      "css": ["dist/content-script.css"]
     }
   ],
+  "background": {
+    "scripts": ["dist/background.js"]
+  },
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html"
   },
   "permissions": [
-    "tabs",
-    "https://www.f-list.net/*"
+    "tabs", "https://www.f-list.net/*"
   ]
 }
