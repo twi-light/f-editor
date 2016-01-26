@@ -44,9 +44,9 @@
 /* 0 */
 /***/ function(module, exports) {
 
-	
+	alert('content-script!');
 
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=content-script.www.f-list.net.js.map
+//# sourceMappingURL=content-script.js.map

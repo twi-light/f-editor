@@ -2,6 +2,7 @@ path = require 'path'
 webpack = require 'webpack'
 
 module.exports =
+  watch: yes
   entry: './src/f-editor.coffee'
   devtool: 'source-map'
   devServer:

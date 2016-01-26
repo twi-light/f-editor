@@ -6,12 +6,12 @@
   "content_scripts": [
     {
       "matches": ["https://www.f-list.net/*"],
-      "js": ["dist/f-editor-chrome-extension.js"]
+      "js": ["dist/content-script.js"]
     }
   ],
   "browser_action": {
     "default_icon": "icon.png",
-    "default_popup": "dist/popup.html"
+    "default_popup": "popup.html"
   },
   "permissions": [
     "tabs",
