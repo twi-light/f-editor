@@ -44,6 +44,8 @@
 /* 0 */
 /***/ function(module, exports) {
 
+	var id;
+	
 	chrome.tabs.query({
 	  url: 'https://www.f-list.net/*'
 	}, function(tabs) {
@@ -51,18 +53,35 @@
 	  results = [];
 	  for (i = 0, len = tabs.length; i < len; i++) {
 	    tab = tabs[i];
-	    results.push(chrome.tabs.executeScript(tab.id, {
-	      file: 'dist/content_script.js'
-	    }, function() {}));
+	    chrome.tabs.executeScript(tab.id, {
+	      file: 'dist/content-script.js'
+	    });
+	    results.push(chrome.tabs.insertCSS(tab.id, {
+	      file: 'dist/content-script.css'
+	    }));
 	  }
 	  return results;
 	});
 	
+	id = "background" + (+Date.now());
+	
 	chrome.runtime.onMessage.addListener(function(data, sender, sendResponse) {
+	  console.log('-->', data != null ? data.id : void 0);
 	  return sendResponse({
-	    pong: true
+	    id: id,
+	    'is ping': true
 	  });
 	});
+	
+	setInterval(function() {
+	  console.log("ping " + id);
+	  return chrome.runtime.sendMessage({
+	    id: id,
+	    ping: true
+	  }, function(data, sender) {
+	    return console.log('<--', data != null ? data.id : void 0);
+	  });
+	}, 1000);
 
 
 /***/ }

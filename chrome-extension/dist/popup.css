@@ -4,34 +4,34 @@ p.message {
 }
 @-moz-keyframes greenWhite {
   from {
-    background-color: #008000;
+    background-color: #f00;
   }
   to {
-    background-color: #fff;
+    background-color: #ff0;
   }
 }
 @-webkit-keyframes greenWhite {
   from {
-    background-color: #008000;
+    background-color: #f00;
   }
   to {
-    background-color: #fff;
+    background-color: #ff0;
   }
 }
 @-o-keyframes greenWhite {
   from {
-    background-color: #008000;
+    background-color: #f00;
   }
   to {
-    background-color: #fff;
+    background-color: #ff0;
   }
 }
 @keyframes greenWhite {
   from {
-    background-color: #008000;
+    background-color: #f00;
   }
   to {
-    background-color: #fff;
+    background-color: #ff0;
   }
 }
 
