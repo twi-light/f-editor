@@ -1,6 +1,7 @@
-require '../popup.html'
-require '../manifest.json'
-require '../icon.png'
+require './manifest.json'
+require './popup.html'
+require './icon.png'
+
 # id = "popup#{+Date.now()}"
 # Message = require './views/message.cjsx'
 # React = dom = require '../../src/dom.coffee'

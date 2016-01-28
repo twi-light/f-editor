@@ -6,12 +6,12 @@
   "content_scripts": [
     {
       "matches": ["https://www.f-list.net/*"],
-      "js": ["dist/content-script.js"],
-      "css": ["dist/content-script.css"]
+      "js": ["content-script.js"],
+      "css": ["content-script.css"]
     }
   ],
   "background": {
-    "scripts": ["dist/background.js"]
+    "scripts": ["background.js"]
   },
   "browser_action": {
     "default_icon": "icon.png",

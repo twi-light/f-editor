@@ -2,10 +2,10 @@
 chrome.tabs.query { url: 'https://www.f-list.net/*' }, (tabs) ->
   for tab in tabs
     chrome.tabs.executeScript tab.id, {
-      file: 'dist/content-script.js'
+      file: 'content-script.js'
     }
     chrome.tabs.insertCSS tab.id, {
-      file: 'dist/content-script.css'
+      file: 'content-script.css'
     }
 id = "background#{+Date.now()}"
 chrome.runtime.onMessage.addListener (data, sender, sendResponse) ->
