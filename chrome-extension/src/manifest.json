@@ -6,8 +6,7 @@
   "content_scripts": [
     {
       "matches": ["https://www.f-list.net/*"],
-      "js": ["content-script.js"],
-      "css": ["content-script.css"]
+      "js": ["content-script.js"]
     }
   ],
   "background": {
