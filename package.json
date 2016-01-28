@@ -8,7 +8,8 @@
     "url": "git+https://github.com/twi-light/twi-light.github.io.git"
   },
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "install": "npm install -g webpack@latest webpack-dev-server@latest"
   },
   "author": "Twi light",
   "license": "MIT",

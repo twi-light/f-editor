@@ -1,7 +1,7 @@
 path = require 'path'
 webpack = require 'webpack'
 ExtractTextPlugin = require 'extract-text-webpack-plugin'
-{ CommonsChunkPlugin } = webpack.optimize
+
 module.exports =
   watch: yes
   entry:
@@ -17,13 +17,13 @@ module.exports =
     extensions: ['', '.js', '.cjsx', '.coffee', '.styl']
   module:
     loaders: [
-      { test: /^manifest.json$|\.html$|\.png$/, loader: "file" }
+      { test: /manifest\.json$|\.html$|\.png$/i, loader: 'file?name=[name].[ext]' }
       {
         test: /\.styl$/i
         loader: ExtractTextPlugin.extract 'style-loader',
           'css-loader!stylus-loader'
       }
-      { test: /\.cjsx$/, loaders: ['coffee', 'cjsx'] }
+      { test: /\.cjsx$/i, loaders: ['coffee', 'cjsx'] }
       { test: /\.coffee$/i, loader: 'coffee' }
     ]
   plugins: [
