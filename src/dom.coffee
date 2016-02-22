@@ -1,10 +1,7 @@
-dom = module.exports = (element, options, children...) ->
+dom = module.exports = (element, props, children...) ->
   if typeof element is 'string'
     element = document.createElement element
-  # unless element instanceof HTMLElement
-  #   [options, children] = arguments
-  #   element = document.createElement options.tagName
-  for own attributeKey, attributeValue of options or {}
+  for own attributeKey, attributeValue of props or {}
     if /^on/.test attributeKey
       dom.on element, attributeKey, attributeValue
     else if attributeKey is 'style'
@@ -23,6 +20,8 @@ dom = module.exports = (element, options, children...) ->
         else
           child
       )
+  if props.dangerouslySetInnerHTML?.__html?
+    element.innerHTML = props.dangerouslySetInnerHTML?.__html
   element
 Object.assign dom, {
   dom
