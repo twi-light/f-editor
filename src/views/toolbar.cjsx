@@ -1,83 +1,37 @@
-require './toolbar.styl'
-React = dom = require '../dom.coffee'
-
-###
-<div f-editor-toolbar>
-  <button ui-state-default ui-corner-all
-    onclick={ @showTags() }>
-      Show BBCode Tags
-  </button>
-  <select theme>
-    <option>Default</option>
-  </select>
-  <button ui-state-default ui-corner-all
-    onclick={ @theme 'default' }>
-       Theme
-  </button>
-  <button ui-state-default ui-corner-all
-    onclick={ @theme 'dark' }>
-      Dark Theme
-  </button>
-  <button ui-state-default ui-corner-all
-    onclick={ @theme 'light' }>
-      Light Theme
-  </button>
-###
-
+import './toolbar.styl'
+import dom, {React} from '../dom.coffee'
+# document.execCommand("insertHTML", false, "<span class='own-class'>"+ document.getSelection()+"</span>")
 module.exports = class Toolbar
   constructor: (@editor) ->
     @element =
-      <div f-editor-toolbar TextareaToolbar>
-        <a title="[text]" f-editor-toolbar-text ToolbarButton onmousedown={
-          => dom.className @editor.element, '~f-editor-editing'
-        }></a>
-        <a title="[BBCode]" f-editor-toolbar-bbcode ToolbarButton onmousedown={
-          => dom.className @editor.element, '~f-editor-show-tags'
-        }></a>
-        <a title="Bold" ToolbarBold ToolbarButton onmousedown={
-          -> document.execCommand 'bold'
-        }></a>
-        <a title="Italic" ToolbarItalic ToolbarButton onmousedown={
-          -> document.execCommand 'italic'
-        }></a>
-        <a title="Underline" ToolbarUnderline ToolbarButton onmousedown={
-          -> document.execCommand 'underline'
-        }></a>
-        <span f-editor-not-implimented>
-          <a title="Justify" ToolbarJustify ToolbarButton onmousedown={
-            -> alert 'All features inside the red box are not yet implimented. (sorry)' # document.execCommand 'justify'
-          }></a>
-          <a title="Blockquote" ToolbarQuote ToolbarButton onmousedown={
-            -> alert 'All features inside the red box are not yet implimented. (sorry)' # document.execCommand 'quote'
-          }></a>
-          <a title="Link" ToolbarLink ToolbarButton onmousedown={
-            -> alert 'All features inside the red box are not yet implimented. (sorry)' # document.execCommand 'createLink'
-          }></a>
-          <a title="Color" ToolbarColor ToolbarButton onmousedown={
-            -> alert 'All features inside the red box are not yet implimented. (sorry)' # document.execCommand 'foreColor', 'purple'
-          }></a>
-          <a title="Icon link" ToolbarIcon ToolbarButton onmousedown={
-            -> alert 'All features inside the red box are not yet implimented. (sorry)' # document.execCommand 'icon'
-          }></a>
-          <a title="Collapse" ToolbarBlock ToolbarButton ToolbarCollapse onmousedown={
-            -> alert 'All features inside the red box are not yet implimented. (sorry)' # document.execCommand 'collapse'
-          }></a>
-          <a title="Insert Inline" ToolbarInline ToolbarButton onmousedown={
-            -> alert 'All features inside the red box are not yet implimented. (sorry)' # document.execCommand 'Toolbars_showInlines'
-          }></a>
+      <div toolbar>
+        <a title="edit text" ToolbarButton onmousedown={=>
+          dom.className @editor.element, '~editing'
+        } />
+        <a title="show tags" ToolbarButton onmousedown={=>
+          dom.className @editor.element, '~show-tags'
+        } />
+        <a title="b" ToolbarButton onmousedown={@editor.command 'bold'} />
+        <a title="i" ToolbarButton onmousedown={@editor.command 'italic'} />
+        <a title="u" ToolbarButton onmousedown={@editor.command 'underline'} />
+        <a title="sub" ToolbarButton onmousedown={@editor.command 'subscript'} />
+        <a title="sup" ToolbarButton onmousedown={@editor.command 'superscript'} />
+        <a title="indent" ToolbarButton onmousedown={@editor.command 'indent'} />
+        <a title="justify" ToolbarButton onmousedown={@editor.command 'justifyFull'} />
+        <a title="left" ToolbarButton onmousedown={@editor.command 'justifyLeft'} />
+        <a title="center" ToolbarButton onmousedown={@editor.command 'justifyCenter'} />
+        <a title="right" ToolbarButton onmousedown={@editor.command 'justifyRight'} />
+        <a title="icon" ToolbarButton onmousedown={@editor.command 'icon'} />
+        <a title="eicon" ToolbarButton onmousedown={@editor.command 'eicon'} />
+        <a title="user" ToolbarButton onmousedown={@editor.command 'user'} />
+        <a title="url" ToolbarButton onmousedown={(event) => (@editor.command 'createLink', 0, prompt()) event} />
+        <span not-implemented>
+          <a title="quote" ToolbarButton onmousedown={@editor.command 'quote'} />
+          <a title="Collapse" ToolbarButton ToolbarCollapse onmousedown={@editor.command 'collapse'} />
+          <a title="Insert Inline" ToolbarButton onmousedown={@editor.command 'Toolbars_showInlines'} />
         </span>
+        { for color in ['blue','white','black','red','yellow','green','pink','gray','orange','purple','brown','cyan']
+          <a key={color} title={"■ #{color}"} className={"#{color}font"} ToolbarButton onmousedown={@editor.command 'color', 0, color} />
+        }
+        <a title="■ none" ToolbarButton onmousedown={@editor.command 'color', 0, null} />
       </div>
-
-<div class="TextareaToolbar MediumPanel">
-  <a title="Bold" ToolbarBold ToolbarButton onclick="$('#CharacterEditDescription').insertAtCaret('[b]','[/b]');"></a>
-  <a title="Italic" ToolbarItalic ToolbarButton onclick="$('#CharacterEditDescription').insertAtCaret('[i]','[/i]');"></a>
-  <a title="Underline" ToolbarUnderline ToolbarButton onclick="$('#CharacterEditDescription').insertAtCaret('[u]','[/u]');"></a>
-  <a title="Justify" ToolbarJustify ToolbarButton onclick="$('#CharacterEditDescription').insertAtCaret('[justify]','[/justify]');"></a>
-  <a title="Blockquote" ToolbarQuote ToolbarButton onclick="$('#CharacterEditDescription').insertAtCaret('[quote]','[/quote]');"></a>
-  <a title="Link" ToolbarLink ToolbarButton onclick="var linkurl=FList.Toolbars_createLink(); if(linkurl!==-1){ $('#CharacterEditDescription').insertAtCaret('[url=' + linkurl + ']','[/url]'); }"></a>
-  <a title="Color" ToolbarColor ToolbarButton onclick="var colortext=FList.Toolbars_createColor(); if(colortext!==-1){ $('#CharacterEditDescription').insertAtCaret('[color=' + colortext + ']','[/color]'); }"></a>
-  <a title="Icon link" ToolbarIcon ToolbarButton onclick="var icontext=FList.Toolbars_createIconLink(); if(icontext!==-1){ $('#CharacterEditDescription').insertAtCaret('','[icon]' + icontext + '[/icon]'); }"></a>
-  <a title="Collapse" ToolbarBlock ToolbarButton ToolbarCollapse onclick="$('#CharacterEditDescription').insertAtCaret('[collapse=title]','[/collapse]');"></a>
-  <a title="Insert Inline" ToolbarInline ToolbarButton onclick="FList.Toolbars_showInlines('CharacterEditDescription')"></a>
-  <a title="Preview" href="javascript:FList.Toolbars_instantPreview('#CharacterEditDescription');">Preview BBCode</a>
-</div>

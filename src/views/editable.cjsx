@@ -1,19 +1,16 @@
-require './editable.styl'
-React = dom = require '../dom.coffee'
-
-
+import './editable.styl'
+import dom, {React} from '../dom.coffee'
 
 module.exports = class Editable
   constructor: ->
-    @element =
-      <div f-editor-editable chat-message contentEditable />
-    # localStorage["/twi-light/f-editor/demo-html"] or
+    @element = <div editable chat-message contentEditable />
+    # @editable.element.innerHTML = localStorage["/twi-light/f-editor/demo-html"]
     @element.innerHTML = """
       <p> We have <b>some text that is bold</b>. </p>
       <p> We also have <i>some text in italics</i>. </p>
       <p> We have <u>this text that is underlined</u>. </p>
 
-      <span class="f-editor-eicon">twiprogramming</span> You can <span class="f-editor-eicon">twiimpossible</span> put stuff <span class="f-editor-eicon">twiintensifies</span> in between <span class="f-editor-eicon">twicutiemark</span> the icons <span class="f-editor-eicon">twiwindy</span>
+      <span class="eicon">twiprogramming</span> You can <span class="eicon">twiimpossible</span> put stuff <span class="eicon">twiintensifies</span> in between <span class="eicon">twicutiemark</span> the icons <span class="eicon">twiwindy</span>
       <br/><br/>
       <p>Normal Text Here.</p>
       <p>You can also select/copy/paste in here!</p>

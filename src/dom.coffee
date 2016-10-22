@@ -1,10 +1,7 @@
-dom = module.exports = (element, options, children...) ->
+export default dom = (element, props = {}, children...) ->
   if typeof element is 'string'
     element = document.createElement element
-  # unless element instanceof HTMLElement
-  #   [options, children] = arguments
-  #   element = document.createElement options.tagName
-  for own attributeKey, attributeValue of options or {}
+  for own attributeKey, attributeValue of props or {}
     if /^on/.test attributeKey
       dom.on element, attributeKey, attributeValue
     else if attributeKey is 'style'
@@ -16,35 +13,52 @@ dom = module.exports = (element, options, children...) ->
         dom.className element, attributeKey
       element[attributeKey] = attributeValue
   if children.length
-    for child in children
-      element.appendChild (
-        if typeof child is 'string'
-          document.createTextNode child
+    appendChildren = (children) ->
+      for child in children
+        if Array.isArray child
+          appendChildren child
         else
-          child
-      )
+          element.appendChild if typeof child is 'string'
+            document.createTextNode child
+          else
+            child
+    appendChildren children
+  if props.dangerouslySetInnerHTML?.__html?
+    element.innerHTML = props.dangerouslySetInnerHTML?.__html
   element
-Object.assign dom, {
-  dom
-  createElement: dom
-  className: (element, classNames) ->
-    classes = new Set element.className.split /\s+/g
-    unless Array.isArray classNames
-      unless typeof classNames is 'string'
-        throw new Error 'classNames second parameter must be a string or [string array]'
-      classNames = classNames.split /\s+/g
-    for className in classNames
-      if /^!/.test className
-        classes.delete className.substring 1
-      else if /^~/.test className
-        className = className.substring 1
-        if classes.has className
-          classes.delete className
-        else
-          classes.add className
+export {dom as React}
+
+export className = (element, classNames) ->
+  classes = new Set element.className.split /\s+/g
+  unless Array.isArray classNames
+    unless typeof classNames is 'string'
+      throw new Error 'classNames second parameter must be a string or [string array]'
+    classNames = classNames.split /\s+/g
+  for className in classNames
+    if /^!/.test className
+      classes.delete className.substring 1
+    else if /^~/.test className
+      className = className.substring 1
+      if classes.has className
+        classes.delete className
       else
         classes.add className
-    element.className = Array.from(classes).join ' '
+    else
+      classes.add className
+  element.className = Array.from(classes).join ' '
+
+export style = (element, styles) ->
+  if typeof styles is 'string'
+    element.style = styles
+  else
+    for own style, value of styles
+      element.style[style] = value
+
+Object.assign dom, {
+  dom
+  React: dom
+  createElement: dom
+  className
   on: (element, types, handler) ->
     if typeof types is 'string'
       types = types.split /\s+/g
@@ -61,10 +75,5 @@ Object.assign dom, {
       if /^on/i.test type
         type = type.substring 2
       element.removeEventListener type, handler
-  style: (element, styles) ->
-    if typeof styles is 'string'
-      element.style = styles
-    else
-      for own style, value of styles
-        element.style[style] = value
+  style
 }

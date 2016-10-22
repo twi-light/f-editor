@@ -1,10 +1,10 @@
-require './theme.selector.styl'
-React = dom = require '../dom.coffee'
+import './theme.selector.styl'
+import {React, dom} from '../dom.coffee'
 
 stylesheet = <link rel="stylesheet" type="text/css" href={"https://static.f-list.net/css/#{localStorage["/twi-light/f-editor/demo-theme"] or 'default'}.css"} />
 document.head.appendChild stylesheet
 
-module.exports = class ThemeSelector
+export default class ThemeSelector
   constructor: (@parent) ->
     @element =
       <div f-editor-theme-selector>
@@ -20,3 +20,5 @@ module.exports = class ThemeSelector
       </div>
     stylesheet.href = "https://static.f-list.net/css/#{localStorage["/twi-light/f-editor/demo-theme"] or 'default'}.css"
     @parent.appendChild @element
+
+window?.FThemeSelector = ThemeSelector
