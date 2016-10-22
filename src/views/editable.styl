@@ -1,11 +1,11 @@
 .f-editor
-  .f-editor-editable
+  .editable
     whiteSpace pre-wrap
     minHeight 4em
     width 100%
     padding 1em
     border 1px dotted grey
-  span.f-editor-eicon
+  .eicon,.icon
     min-width 50px
     min-height 4.5em
     background-size 3em 3em
@@ -14,9 +14,10 @@
     white-space nowrap
     display inline-block
 
-.f-editor.f-editor-show-tags
+.f-editor.show-tags
   ::before,::after
     opacity .69
+    color inherit
   b::before
     content '[b]'
   b::after
@@ -25,29 +26,81 @@
     content '[i]'
   i::after
     content '[/i]'
-  s::before
-    content '[s]'
-  s::after
-    content '[/s]'
   u::before
     content '[u]'
   u::after
     content '[/u]'
-
-  span.f-editor-icon
+  s::before
+    content '[s]'
+  s::after
+    content '[/s]'
+  a::before
+    content '[url=' attr(href) ']'
+  a::after
+    content '[/url]'
+  sup::before
+    content '[sup]'
+  sup::after
+    content '[/sup]'
+  sub::before
+    content '[sub]'
+  sub::after
+    content '[/sub]'
+  a.AvatarLink::before
+    content '[user]'
+  a.AvatarLink::after
+    content '[/user]'
+  a.SessionLink
+    color rgba(0,0,0,0)
+  a.SessionLink::before
+    content '[session=' attr(data-session) ']' attr(alt)
+  a.SessionLink::after
+    content '[/session]'
+  [style*=right]::before
+    content '[right]'
+  [style*=right]::after
+    content '[/right]'
+  [style*=left]::before
+    content '[left]'
+  [style*=left]::after
+    content '[/left]'
+  [style*=center]::before
+    content '[center]'
+  [style*=center]::after
+    content '[/center]'
+  [style*=justify]::before
+    content '[justify]'
+  [style*=justify]::after
+    content '[/justify]'
+  [style*=indent]::before
+    content '[indent]'
+  [style*=indent]::after
+    content '[/indent]'
+  [color]::before
+    content '[color='attr(color)']'
+  [color]::after
+    content '[/color]'
+  .icon
     border 1px dotted grey
-  span.f-editor-icon::before
+  .icon::before
     content '[icon]'
     white-space nowrap
-  span.f-editor-icon::after
+  .icon::after
     content '[/icon]'
     white-space nowrap
-
-  span.f-editor-eicon
+  .eicon
     border 1px dotted grey
-  span.f-editor-eicon::before
+  .eicon::before
     content '[eicon]'
     white-space nowrap
-  span.f-editor-eicon::after
+  .eicon::after
     content '[/eicon]'
+    white-space nowrap
+  .user
+    border 1px dotted grey
+  .user::before
+    content '[user]'
+    white-space nowrap
+  .user::after
+    content '[/user]'
     white-space nowrap

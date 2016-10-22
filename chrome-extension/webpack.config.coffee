@@ -1,7 +1,7 @@
 path = require 'path'
 webpack = require 'webpack'
 
-module.exports =
+module.exports = {
   watch: yes
   entry:
     'content-script': './src/content-script.coffee'
@@ -12,8 +12,6 @@ module.exports =
     filename: '[name].js'
     chunkFilename: '[id].js'
   devtool: 'source-map'
-  resolve:
-    extensions: ['', '.js', '.cjsx', '.coffee', '.styl']
   module:
     loaders: [
       {
@@ -21,6 +19,7 @@ module.exports =
         loader: 'file?name=[name].[ext]'
       }
       { test: /\.styl$/i, loaders: ['style/useable', 'css', 'stylus'] }
-      { test: /\.cjsx$/i, loaders: ['coffee', 'cjsx'] }
-      { test: /\.coffee$/i, loader: 'coffee' }
+      { test: /\.cjsx$/i, loaders: ['babel?presets[]=es2017', 'coffee', 'cjsx'] }
+      { test: /\.coffee$/i, loaders: ['babel?presets[]=es2017', 'coffee'] }
     ]
+}

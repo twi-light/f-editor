@@ -10,7 +10,7 @@ script.innerHTML = "(#{bridge})()"
 document.head.appendChild script
 window.postMessage { from: 'content-script' }
 
-# contentScriptStyle = require './content-script.styl'
+# import contentScriptStyle from './content-script.styl'
 # using = no
 # window?.on
 # # setInterval ->

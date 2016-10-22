@@ -1,5 +1,5 @@
-require './message.styl'
-React = dom = require '../../../src/dom.coffee'
+import './message.styl'
+import {React, dom} from '../../../src/dom.coffee'
 
 module.exports =
   class Message

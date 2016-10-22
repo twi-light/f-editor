@@ -1,10 +1,10 @@
-require './manifest.json'
-require './popup.html'
-require './icon.png'
+import './manifest.json'
+import './popup.html'
+import './icon.png'
 
 # id = "popup#{+Date.now()}"
-# Message = require './views/message.cjsx'
-# React = dom = require '../../src/dom.coffee'
+# import Message from './views/message.cjsx'
+# import {React, dom} from '../../src/dom.coffee'
 # window.addEventListener 'load', ->
 #   chrome.runtime.onMessage.addListener (data, sender, sendResponse) ->
 #     new Message data, sender

@@ -1,30 +1,27 @@
 .f-editor
-  .f-editor-toolbar
+  .toolbar
     min-height 2em
-    a
-      min-height 1em
-      min-width 2em
-      padding .2em 0em 0em .5em
-    a.f-editor-toolbar-bbcode
-      min-width 6em
-      padding .2em 0em 0em .5em
-    a.f-editor-toolbar-bbcode:before
-      content '[bbcode]'
-      color black
-      font-weight bold
-    a.f-editor-toolbar-text
-      min-width 5em
-      padding .2em 0em 0em .5em
-    a.f-editor-toolbar-text:before
-      content ' [text] '
-      color black
-      font-weight bold
-    button
-      border 1px solid white
-      padding .5em
-      margin .5em
+    border 1px dotted #808080
+    display flex
+    flex-wrap wrap
+    [title]
+      text-shadow #000 0px 1px 2px
       cursor pointer
-    .f-editor-not-implimented
-      a
-        opacity .2
-        border 2px solid red
+      display block
+      width auto !important
+      height auto !important
+      padding 0.25em
+      margin 0.1em
+      background-position 0.25em center !important
+    [title]::before
+      opacity 1
+      content '['attr(title)
+    [title]::after
+      opacity 1
+      content ']'
+    .not-implemented
+      display none
+    dropdown[type=checkbox], dropdown[type=checkbox] + *
+      display none
+    dropdown[type=checkbox]:checked + *
+      display block
