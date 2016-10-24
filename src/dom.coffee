@@ -31,7 +31,7 @@ export {dom as React}
 export className = (element, classNames) ->
   classes = new Set element.className.split /\s+/g
   unless Array.isArray classNames
-    unless typeof classNames is 'string'
+    if DEBUG and typeof classNames isnt 'string'
       throw new Error 'classNames second parameter must be a string or [string array]'
     classNames = classNames.split /\s+/g
   for className in classNames

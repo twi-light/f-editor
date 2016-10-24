@@ -33,5 +33,5 @@ module.exports = class Toolbar
         { for color in ['blue','white','black','red','yellow','green','pink','gray','orange','purple','brown','cyan']
           <a key={color} title={"■ #{color}"} className={"#{color}font"} ToolbarButton onmousedown={@editor.command 'color', 0, color} />
         }
-        <a title="■ none" ToolbarButton onmousedown={@editor.command 'color', 0, null} />
+        <a title="■ none" ToolbarButton onmousedown={@editor.command 'color', 0, ''} />
       </div>
